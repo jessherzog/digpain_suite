@@ -12,6 +12,9 @@ var brushes;
 var radX;
 var radY;
 
+var fills;
+var currentFill = 0;
+
 img = new Image();
 img.onload = imgLoaf;
 
@@ -23,48 +26,40 @@ function imgLoaf(ev) {
 
 window.onmousedown = function(e) {
   is_drawing = true;
+
+  currentFill += 1;
+  if (currentFill === fills.length) { currentFill = 0; }
+
 };
 
 window.onmousemove = function(e) {
+  radX = e.y;
+  radY = e.x;
+
   if(is_drawing){
-    var fill = pickFill();
-    var brush = pickBrush(brushes);
-    run_filter(fill, e.x/4-radX/4, e.y/4-radY/4, brush, brush);
+    var fill = fills[currentFill];
+    var brush = pickBrush(1);
+    run_filter(fill, e.x/4, e.y/4, brush[0], brush[1]);
   }
 };
 
 window.onmouseup = function(e) {
-  is_drawing = false;
+  is_drawing = false; 
 };
 
-var pickFill = function() {
-  var fills = [redden, greenie];
-  for (var currentFill = 0; currentFill < fills.length; currentFill++){
+var pickBrush = function(brush) {
 
-  }
-};
-
-var pickBrush = function() {
-
-  radX = e.y;
-  radY = e.x;
-
-  switch(brushes) {
+  switch(brush) {
   case 1:
-    radX/2;
-    radY/2;
+    return [30, 30];
     break;
   case 2:
-    radX/10;
-    radY/10;
+    return [20, 5];
     break;
   default:
-    radX/1;
-    radY/1;
+    return [2, 2];
     break;
   }
-
-  return radX;
-  return radY;
-}
+ 
+};
 

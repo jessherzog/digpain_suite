@@ -12,6 +12,9 @@
 			height: 100vh;
 			position: absolute;
 			image-rendering: pixelated;
+			top: 0;
+			left: 0;
+			z-index: -400;
 
 		}
 		#dropzone {
@@ -27,6 +30,9 @@
 			font-size: 11px;
 			color: blue;
         }
+        p {
+    		margin: 20px;
+        }
 			
 	</style>
 
@@ -34,16 +40,24 @@
 	<body>
 		<p id="maintxt">drag image inside</p> 	
 		
-		<!--<ul><input id="" type="button" value="pixel"></ul>
+	<!--
+		<ul><input id="" type="button" value="pixel"></ul>
 		if pressed: list filters, pixel size meter
-			<ul><input id="" type="button" value="scratch (requires two images uploaded)"></ul>
-		if image uploaded, ask to upload another -->
-		<!-- if pressed: scratcher size meter			
-			<ul><input id=""type="button"value="text"></ul>
-		if pressed: text uploader/, letter size-->
+		
+		<ul><input id="" type="button" value="scratch (requires two images uploaded)"></ul>
+		if image uploaded, ask to upload another
+		if pressed: scratcher size meter	
+		
+		<ul><input id=""type="button"value="text"></ul>
+		if pressed: text uploader/, letter size
+
+	-->
 
 		<canvas></canvas>
 		<div id="dropzone"></div>
+		
+
+
 		<!-- dropzone / editzone -->
 		<script src="js/dropzone.js"></script>
 		<!-- the main stuff -->
