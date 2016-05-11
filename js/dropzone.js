@@ -15,11 +15,11 @@ dropzone.ondrop = function (e) {
     ctx.drawImage(img, 0, 0, can.width, can.height);    
     
     document.getElementById('maintxt').innerHTML = 
-    '<p> pick a tool' + '<ul><input id="" type="button" value="pixel"></ul>' + 
-    '<ul><input id="" type="button" value="scratch"> (drag in a second image)</ul>' +
-    '<ul><input id=""type="button" value="text"></ul> </p>';
-    
-  };
+    '<ul><input onclick="changePix()" id="pixel" type="button" value="smear"></ul></p>' +
+    '<ul><input onclick="erase()" id="eraser" type="button" value="erase"></ul></p>';  
+
+      dropzone.style.visibility = "hidden";
+    };
 
   reader.readAsDataURL(e.dataTransfer.files[0]);
 

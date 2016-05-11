@@ -1,11 +1,15 @@
 <html>
 <head>
-	<title>pixel</title>
+	<title>pixel smear</title>
 	
+    	<!-- wiki api-->
+    	<script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+
 	<style>
 		body{
 			margin: 0;
-			cursor: default;
+			overflow: hidden;
+			cursor: crosshair;
 		}
 		canvas {
 			width: 100vw;
@@ -15,7 +19,6 @@
 			top: 0;
 			left: 0;
 			z-index: -400;
-
 		}
 		#dropzone {
         	position: absolute;
@@ -24,49 +27,83 @@
         	width: 100vw;
         	height: 100vh;
         	background-color: rgba(255, 0, 0, 0);
+
         }
         p, input{
 			font-family: "Verdana", "Times", sans-serif;
 			font-size: 11px;
-			color: blue;
-        }
-        p {
-    		margin: 20px;
-        }
-			
+			color: blue; 
+		}	
+		#pixel{
+			z-index: 400;
+		}
+		p{
+		    -webkit-transform: rotate(-30deg);
+		    -moz-transform: rotate(-30deg);
+		    -o-transform: rotate(-30deg);
+		    -ms-transform: rotate(-30deg);
+		    transform: rotate(-30deg);
+
+			margin: 30px;
+		}
+
 	</style>
 
 </head>
+
+
 	<body>
-		<p id="maintxt">drag image inside</p> 	
-		
+		<canvas id="canvas"></canvas>
+
+		<div id="dropzone"></div>
+
+		<p draggable="true" id="maintxt">drag image inside</p> 	
+
+		<script> 
+			function changePix() {
+		      var pix = document.getElementById('pixel');
+		      pix.value="smearing";
+		      if(is_erasing == true){
+		      	is_drawing = false;
+		      } else {
+			    is_drawing = true;
+		      }
+		    };
+		    function erase(){
+		      var erase = document.getElementById('eraser');
+		      erase.value="erasing";
+		      if(is_drawing == true){
+		      	is_erasing = false;
+		      } else {
+			    is_erasing = true;
+		      }
+		    }
+    	</script>
+
 	<!--
-		<ul><input id="" type="button" value="pixel"></ul>
-		if pressed: list filters, pixel size meter
+		if pressed: list filters, brush size meter
 		
-		<ul><input id="" type="button" value="scratch (requires two images uploaded)"></ul>
 		if image uploaded, ask to upload another
 		if pressed: scratcher size meter	
 		
-		<ul><input id=""type="button"value="text"></ul>
 		if pressed: text uploader/, letter size
-
 	-->
-
-		<canvas></canvas>
-		<div id="dropzone"></div>
 		
-
-
 		<!-- dropzone / editzone -->
 		<script src="js/dropzone.js"></script>
 		<!-- the main stuff -->
 		<script src="js/suite.js"></script>
    		<script src="js/helpers.js"></script>
+   		<!-- <script src="js/text.js"></script> -->
 		<!-- tools -->
     	<script src="js/tools/filter.js"></script>
 		<!-- actions -->
     	<script src="js/actions/redden.js"></script>
+		<script src="js/actions/texter.js"></script>
+		<!-- text stuff -->
+		<script src="libraries/dat.gui.min.js"></script>
+		<script src="libraries/animationFrame.js"></script>
+
 	</body>
 </html>
 
