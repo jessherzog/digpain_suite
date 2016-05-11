@@ -63,7 +63,6 @@ window.onmouseup = function(e) {
 };
 
 var pickBrush = function(brush) {
-
   switch(brush) {
   case 1:
     return [30, 30];

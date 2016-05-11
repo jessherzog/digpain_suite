@@ -181,4 +181,4 @@ var eater = function(imageData) {
 	}
 }
 
-fills = [redden1, bumpy1, greenie1, redden, bumpPink, bumpy, bumpy2, greenie];
+fills = [redden1, bumpy1, greenie1, redden, bumpPink, bumpy, bumpy2, greenie, wow];
